@@ -1,0 +1,2 @@
+package in.tutorlink.repository; import in.tutorlink.entity.*; import org.springframework.data.jpa.repository.*; import java.util.*;
+public interface ActiveTuitionRepository extends JpaRepository<ActiveTuition,Long>{ boolean existsByApplicationId(Long id); Optional<ActiveTuition> findByApplicationId(Long id); List<ActiveTuition> findByParentId(Long id); List<ActiveTuition> findByTutorId(Long id); }

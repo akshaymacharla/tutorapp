@@ -1,0 +1,4 @@
+package in.tutorlink.security; import io.jsonwebtoken.*; import io.jsonwebtoken.security.*; import org.springframework.beans.factory.annotation.*; import org.springframework.stereotype.*; import java.nio.charset.*; import java.util.*;
+@Service public class JwtService { @Value("${app.jwt-secret}") String secret; @Value("${app.jwt-expiration-ms}") long expiry;
+ public String create(Long id,String role){return Jwts.builder().subject(id.toString()).claim("role",role).issuedAt(new Date()).expiration(new Date(System.currentTimeMillis()+expiry)).signWith(Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8))).compact();}
+ public Claims parse(String token){return Jwts.parser().verifyWith(Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8))).build().parseSignedClaims(token).getPayload();}}

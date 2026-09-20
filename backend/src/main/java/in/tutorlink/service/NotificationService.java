@@ -1,0 +1,2 @@
+package in.tutorlink.service; import in.tutorlink.entity.*; import in.tutorlink.repository.*; import org.springframework.stereotype.*;
+@Service public class NotificationService { final NotificationRepository repo; public NotificationService(NotificationRepository r){repo=r;} public void send(User u,String title,String body){Notification n=new Notification();n.user=u;n.title=title;n.body=body;repo.save(n);} }

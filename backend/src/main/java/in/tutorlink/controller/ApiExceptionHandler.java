@@ -1,0 +1,2 @@
+package in.tutorlink.controller; import org.springframework.web.bind.annotation.*; import org.springframework.http.*; import java.util.*;
+@RestControllerAdvice public class ApiExceptionHandler { @ExceptionHandler(Exception.class) ResponseEntity<?> error(Exception e){return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("success",false,"message",e.getMessage()==null?"Request could not be processed":e.getMessage()));}}

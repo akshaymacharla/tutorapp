@@ -1,0 +1,2 @@
+package in.tutorlink.dto; import jakarta.validation.constraints.*; import in.tutorlink.entity.*;
+public final class AuthDtos { public record Register(@NotBlank String fullName,@Email String email,@Size(min=8) String password,@NotNull Role role,String phone,String location){} public record Login(@Email String email,@NotBlank String password){} public record Token(String token,Long userId,String name,Role role){} }
